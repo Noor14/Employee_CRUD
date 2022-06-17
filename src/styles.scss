@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@use '_styles';
+.toast-container {
+    .ngx-toastr{
+        box-shadow: none;
+        background-image: none;
+        background-size: unset;
+        padding: 12px;
+        border-radius: 2px;
+    }
+    .ngx-toastr:hover {
+      box-shadow:unset;
+    }
+
+  }

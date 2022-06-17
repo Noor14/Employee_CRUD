@@ -1,0 +1,25 @@
+@use '_variables';
+
+.employee-list{
+    .card{
+        .table {
+            thead{
+                tr{
+                    background-color: variables.$primaryColor;
+                    color: #fff;
+                    th{
+                        font-weight: 500;
+                    }
+                }
+                
+            }
+            tbody{
+                tr{
+                    td{
+                        font-size: variables.$mediumFontSize;
+                    }
+                }
+            }
+        }
+    }
+}

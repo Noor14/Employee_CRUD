@@ -1,0 +1,95 @@
+<section class="employee-form">
+    <h4 class="text-primary my-3">
+         <ng-container *ngIf="employeeId; else other">Edit</ng-container>
+         <ng-template #other>Add</ng-template>
+         Employee
+    </h4>
+    <div class="card" *ngIf="employeeFound != undefined && employeeFound || !employeeId">
+        <div class="card-body" >
+            <form [formGroup]="employeeForm">
+                <div class="row">
+                    <div class="col-md-4 col-12 col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label required" for="name">Full Name</label>
+                            <input id="name" class="form-control" formControlName="fullName"
+                            [ngClass]="{'border-danger': employeeForm.controls['fullName'].errors && employeeForm.controls['fullName'].dirty}" />
+                            <app-validation-messages [fieldName]="'Full Name'" [regexPattern]= "alphaRegex" [control]="employeeForm.get('fullName')"></app-validation-messages>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-12 col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label required" for="company">Company</label>
+                            <input id="company" class="form-control" formControlName="company"
+                            [ngClass]="{'border-danger': employeeForm.controls['company'].errors && employeeForm.controls['company'].dirty}" />
+                            <app-validation-messages [fieldName]="'Company Name'" [control]="employeeForm.get('company')"></app-validation-messages>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-12 col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label required" for="position">Position</label>
+                            <input id="position" class="form-control" formControlName="position" 
+                            [ngClass]="{'border-danger': employeeForm.controls['position'].errors && employeeForm.controls['position'].dirty}" />
+                            <app-validation-messages [fieldName]="'Position'" [control]="employeeForm.get('position')"></app-validation-messages>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-12 col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label required" for="phoneNo">Phone No</label>
+                            <input id="phoneNo" class="form-control" formControlName="phone"
+                            [ngClass]="{'border-danger': employeeForm.controls['phone'].errors && employeeForm.controls['phone'].dirty}" />
+                            <app-validation-messages [fieldName]="'Phone No'" [control]="employeeForm.get('phone')"></app-validation-messages>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-12 col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label required" for="dob">Date of Birth</label>
+                            <div class="input-group">
+                                <input id="dob" class="form-control"
+                                formControlName="dob"
+                                placement="bottom-right"
+                                autocomplete="off" readonly
+                                ngbDatepicker #d="ngbDatepicker"
+                                [maxDate]="maxDate"
+                                [minDate]="minDate"
+                                [ngClass]="{'border-danger': employeeForm.controls['dob'].errors && employeeForm.controls['dob'].dirty}" />
+                                <button class="btn append-btn btn-primary" (click)="d.toggle()" type="button">
+                                    <img src="./assets/_images/calendar.svg" alt="calendar">
+                                </button>
+                            </div>
+                            <app-validation-messages [fieldName]="'DOB'" [control]="employeeForm.get('dob')"></app-validation-messages>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-12 col-sm-6">
+                        <label class="form-label required d-block mb-3">Gender</label>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" formControlName="gender" name="gender" 
+                             id="male" [value]="true" class="form-check-input" /> 
+                            <label class="form-check-label" for="male">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" formControlName="gender" name="gender" 
+                            id="female" [value]="false" class="form-check-input" />
+                            <label class="form-check-label" for="female">Female</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-12 col-sm-6">
+                        <div class="form-group mt-3 mt-sm-0">
+                            <label class="form-label required" for="email">Email</label>
+                            <input id="email" type="email" formControlName="email" class="form-control" 
+                            [ngClass]="{'border-danger': employeeForm.controls['email'].errors && employeeForm.controls['email'].dirty}" />
+                            <app-validation-messages [fieldName]="'Email Address'" [control]="employeeForm.get('email')"></app-validation-messages>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-end align-items-center">
+                    <button type="button" class="btn btn-outline-primary px-5 align-self-stretch m-1" routerLink="/employee-list">Back</button>
+                    <button type="button" class="btn btn-primary px-5 align-self-stretch m-1" (click)="submit()">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="border text-center p-3" *ngIf="employeeFound != undefined && !employeeFound">
+        <p class="text-danger m-0">Employee Not Found</p>
+    </div> 
+
+</section>

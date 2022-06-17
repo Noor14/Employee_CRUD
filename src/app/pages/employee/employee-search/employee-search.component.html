@@ -1,0 +1,36 @@
+<section class="employeeSearch">
+    <h4 class="text-primary my-3">
+       Employee Search
+   </h4>
+   <div class="card">
+       <div class="card-body">
+           <form [formGroup]="employeeSearchForm">
+               <div class="row">
+                   <div class="col-md-4 col-12 col-sm-6">
+                       <div class="form-group">
+                           <label class="form-label" for="name">Full Name</label>
+                           <input id="name" class="form-control" formControlName="fullName" />
+                       </div>
+                   </div>
+                   <div class="col-md-4 col-12 col-sm-6">
+                       <div class="form-group">
+                           <label class="form-label" for="company">Company</label>
+                           <input id="company" class="form-control" formControlName="company" />
+                       </div>
+                   </div>
+                  
+                   <div class="col-md-4 col-12 col-sm-6">
+                       <div class="form-group mt-3 mt-sm-0">
+                           <label class="form-label" for="email">Email</label>
+                           <input id="email" type="email" formControlName="email" class="form-control" />
+                       </div>
+                   </div>
+               </div>
+               <div class="d-flex flex-column flex-md-row justify-content-end align-items-center mt-3">
+                <button type="button" class="btn btn-outline-primary px-5 align-self-stretch m-1" (click)="reset()">Reset</button>
+                <button type="button" class="btn btn-primary px-5 align-self-stretch m-1" (click)="submit()">Submit</button>
+               </div>
+           </form>
+       </div>
+   </div>
+</section>

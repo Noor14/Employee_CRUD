@@ -1,0 +1,5 @@
+<ng-container *ngIf="control?.errors && control?.dirty">
+    <p class="text-danger fs-14 mb-1" *ngIf="control.errors.required">{{'fieldName is required' | replaceBy: 'fieldName' : fieldName}}</p>
+    <p class="text-danger fs-14 mb-1" *ngIf="control.errors.pattern && !control.errors.email">{{'fieldName should be validate from' | replaceBy: 'fieldName' : fieldName}} {{regexPattern}}</p>
+    <p class="text-danger fs-14 mb-1" *ngIf="control.errors.email">Enter valid email address</p>
+</ng-container>

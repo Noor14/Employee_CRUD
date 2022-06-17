@@ -1,0 +1,19 @@
+<section class="dialogBox">
+    <div class="header">
+        <h5 class="fw-bold text-primary mt-4 px-3 text-center">
+            {{data?.title}}
+        </h5>
+        <button type="button" class="btn btn-close" aria-label="Close" (click)="_activeModal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body p-4 text-center">
+     
+      <div class="fs-14 px-3">
+        {{data?.message}}
+      </div>
+      <div class="mt-4">
+        <button type="button" class="btn text-danger px-4 mx-1" (click)="close(true)">Yes, I want </button>
+        <button type="button" class="btn px-4 mx-1" (click)="close(false)">No</button>
+      </div>
+    </div>
+  </section>
+  

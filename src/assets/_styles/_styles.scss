@@ -1,0 +1,165 @@
+@use '_variables';
+html{
+    body{
+        .btn{
+            color: variables.$primaryColor;
+            border: unset;
+            &:hover{
+                border: unset
+            }
+            &:focus, &:active, &:active:focus{
+                box-shadow: none;
+            }
+            &.btn-primary{
+                border-radius: 2px;
+                color: #fff;
+                background-color: variables.$primaryColor;
+            }
+            &.btn-outline-primary{
+                border: 1px solid variables.$primaryColor;
+                color: variables.$primaryColor;
+                border-radius: 2px;
+                &:focus, &:hover, &:active{
+                    background-color: transparent;
+                }
+
+            }
+        }
+        input{
+            &.form-control{
+                border-radius: 2px;
+                &:focus{
+                    box-shadow: none;
+                    border-color: variables.$primaryColor;
+                }
+            }
+            &.form-check-input{
+                &:checked{
+                    background-color: variables.$primaryColor;
+                    border-color: variables.$primaryColor;
+                }
+            }
+        }
+        .form-select{
+            border-radius: 2px;
+            &:focus{
+                box-shadow: none;
+                border-color: variables.$primaryColor;
+            }
+        }
+        .form-label{
+            &.required{
+                position: relative;
+                &::after{
+                    content: '*';
+                    position: absolute;
+                    color: var(--bs-danger);
+                    margin-left: 0.3rem;
+                }
+            }
+        }
+        .fs-14{
+            font-size: variables.$mediumFontSize;
+        }
+
+        .text-primary{
+            color: variables.$primaryColor !important
+        }
+        .pagination{
+            .page-link{
+                color: variables.$primaryColor;
+                &:focus{
+                    box-shadow: none;
+                }
+            }
+            .page-item{
+                &.active{
+                    .page-link{
+                        background-color: variables.$primaryColor;
+                        border-color: variables.$primaryColor;
+                        color: #fff;
+                    }
+                  
+                }
+            }
+        }
+
+        ngb-datepicker{
+            .ngb-dp-header{
+              background-color: unset;
+              ngb-datepicker-navigation{
+                .ngb-dp-arrow{
+                  .ngb-dp-arrow-btn{
+                    color: variables.$primaryColor;
+                    .ngb-dp-navigation-chevron{
+                      border-width: .14em .14em 0 0;
+                      width: .6em;
+                      height: .6em
+                    }
+                    &:focus{
+                      outline: unset;
+                    }
+                  }
+                }
+                .ngb-dp-month-name{
+                  color: variables.$primaryColor;
+                  font-size: 16.1px;
+                }
+                ngb-datepicker-navigation-select{
+                  .custom-select{
+                    margin: 2px;
+                    border: 0.5px solid variables.$primaryColor;
+                    color: variables.$primaryColor;
+                    border-radius: 0.25rem;
+                    &:focus{
+                      border-color:#ced4da;
+                      box-shadow:unset;
+                    }
+                    &:focus-visible{                      
+                      outline: unset;
+                    }
+                  }
+                }
+        
+              }
+            }
+            .ngb-dp-months{
+              .ngb-dp-month{
+                width: 22rem;
+                .ngb-dp-week{
+                  padding-left: 1rem;
+                  padding-right: 1rem;
+                  background-color: unset;
+                  &.ngb-dp-weekdays{
+                    margin-bottom:5px;
+                  }
+                  .ngb-dp-day{
+                    width: 100%;
+                    &:focus{
+                      outline: unset;
+                    }
+                    &:last-child{
+                      .btn-light{
+                        color: var(--bs-danger);
+                      }
+                    }
+                    .btn-light{
+                      margin: auto;
+                      &.bg-primary{
+                        background-color: variables.$primaryColor !important;
+                        border-radius: .15rem
+                      }
+                    }
+                  }
+                }
+                .ngb-dp-weekday{
+                  font-style: normal;
+                  color: #777777;
+                  width: 100%;
+                }
+              }
+         
+            }
+          }
+    }
+}
