@@ -63,9 +63,7 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
         this.employeeForm.patchValue(res);
       },
       error: (error: HttpErrorResponse) => {
-        if(error.status == 404){
-          this.employeeFound = false;
-        }
+        (error.status == 404)? this.employeeFound = false : 
         this._toastr.error('Error: Please try again later');
       }
     })
