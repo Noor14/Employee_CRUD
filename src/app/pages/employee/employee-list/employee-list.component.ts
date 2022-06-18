@@ -24,7 +24,6 @@ export class EmployeeListComponent implements OnInit {
   private searchObject: any;
   public employeeSearchReset: boolean = false;
   public perPage: string = pagination.limit;
-  private inited:boolean = true;
   constructor(
     private readonly _modalService: NgbModal,
     private readonly _toastr: ToastrService,
@@ -54,14 +53,12 @@ export class EmployeeListComponent implements OnInit {
   resetEmployeeSearch(): void{
     this.searchObject = null;
     this.getAllEmployee(this.pagination);
-    this.inited = true;
   }
 
   searchEmployee(obj?: any, limit: any = pagination.limit){
     let queryString;
     if(obj){
       this.searchObject = obj;
-      this.inited = false;
       queryString = convertObjectToQueryString(obj);
     }
     const filteredQueryString = convertObjectToQueryString({
@@ -69,6 +66,7 @@ export class EmployeeListComponent implements OnInit {
         _page: pagination.page,
         ...obj
     });
+    this.page = 1;
     this._employeeService.retrieveFilteredRecords(queryString, filteredQueryString).subscribe({
       next: (res: any) => {
        this.totalEmployees = res.allEmployees.length;
@@ -84,7 +82,8 @@ export class EmployeeListComponent implements OnInit {
     const object = {
       _limit: pagination.limit,
       _page: pagination.page,
-      ...(obj && obj)
+      ...(obj && obj),
+      ...(this.searchObject && this.searchObject)
     }
     const queryString = convertObjectToQueryString(object);
     this._employeeService.getEmployeesByFilter(queryString).subscribe(
@@ -101,16 +100,14 @@ export class EmployeeListComponent implements OnInit {
   limitChange(value: string): void{
     this.searchEmployee(this.searchObject, value)
     this.pageSize = value;
-    this.inited = false;
+    this.page = 1;
   }
 
   paginate(){
-    if(this.inited){
-      const obj = {
-        _page: this.page,
-      };
-      this.getEmployeeByCriteria(obj);
-    }
+    const obj = {
+      _page: this.page,
+    };
+    this.getEmployeeByCriteria(obj);
   }
 
 
